@@ -58,7 +58,7 @@ public class MultiRequestBodyArgumentResolver extends AbstractMessageConverterMe
      */
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        // 支持带@MultiRequestBody注解的参数
+        // 支持带 @MultiRequestBody 注解的参数
         return parameter.hasParameterAnnotation(MultiRequestBody.class);
     }
 
@@ -91,7 +91,7 @@ public class MultiRequestBodyArgumentResolver extends AbstractMessageConverterMe
     private Object readWithMessage(MethodParameter parameter, NativeWebRequest webRequest) throws Exception {
         // 获取请求 json, 并使用 jackson 解析参数
         String jsonBody = getRequestBody(webRequest);
-        // 这里的 Dict 是 hutool 工具中封装的 map
+        // 这里的 Dict 是 Hutool 工具中封装的 map
         Dict dict = JsonUtils.parseMap(jsonBody);
 
         // 获取参数类型
@@ -106,7 +106,7 @@ public class MultiRequestBodyArgumentResolver extends AbstractMessageConverterMe
         // 基本数据类型
         if (parameterType.isPrimitive()) {
             // 如果没有解析到值, 无论该参数是否必传都抛出异常
-            // TODO 因为基本数据类型不能为 null, 如果不报错就需要返回一个默认值, 可能会对业务产生影响, 所以这里抛出了异常
+            // 因为基本数据类型不能为 null, 如果不报错就需要返回一个默认值, 可能会对业务产生影响, 所以这里抛出了异常
             if (value == null) {
                 throw new IllegalArgumentException(String.format("isRequired param %s is not present", key));
             }
