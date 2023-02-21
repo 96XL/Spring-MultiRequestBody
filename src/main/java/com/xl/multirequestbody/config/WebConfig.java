@@ -18,7 +18,7 @@ import java.util.List;
  * @author XL
  */
 @Configuration
-public class WebMvcConfig extends WebMvcConfigurationSupport {
+public class WebConfig extends WebMvcConfigurationSupport {
 
     /**
      * 添加 MultiRequestBody 参数解析器

@@ -54,7 +54,7 @@ public class MultiRequestBodyArgumentResolver extends AbstractMessageConverterMe
      * 设置支持的方法参数类型
      *
      * @param parameter 方法参数
-     * @return 支持的类型
+     * @return 是否支持
      */
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
@@ -67,7 +67,7 @@ public class MultiRequestBodyArgumentResolver extends AbstractMessageConverterMe
      */
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
-        Object arg = readWithMessage(parameter, webRequest);
+        Object arg = readWithMessageConverters(parameter, webRequest);
         String name = parameter.getParameterName();
         if (binderFactory != null) {
             WebDataBinder binder = binderFactory.createBinder(webRequest, arg, name);
@@ -88,7 +88,7 @@ public class MultiRequestBodyArgumentResolver extends AbstractMessageConverterMe
     /**
      * 获取参数
      */
-    private Object readWithMessage(MethodParameter parameter, NativeWebRequest webRequest) throws Exception {
+    private Object readWithMessageConverters(MethodParameter parameter, NativeWebRequest webRequest) throws Exception {
         // 获取请求 json, 并使用 jackson 解析参数
         String jsonBody = getRequestBody(webRequest);
         // 这里的 Dict 是 Hutool 工具中封装的 map
