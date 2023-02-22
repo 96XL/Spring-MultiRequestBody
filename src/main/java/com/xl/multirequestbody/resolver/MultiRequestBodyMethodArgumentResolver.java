@@ -27,7 +27,7 @@ import java.util.Set;
  *
  * @author XL
  */
-public class MultiRequestBodyArgumentResolver extends AbstractMessageConverterMethodArgumentResolver {
+public class MultiRequestBodyMethodArgumentResolver extends AbstractMessageConverterMethodArgumentResolver {
 
     private static final String JSON_REQUEST_BODY = "JSON_REQUEST_BODY";
 
@@ -46,7 +46,7 @@ public class MultiRequestBodyArgumentResolver extends AbstractMessageConverterMe
         classSet.add(String.class);
     }
 
-    public MultiRequestBodyArgumentResolver(List<HttpMessageConverter<?>> converters) {
+    public MultiRequestBodyMethodArgumentResolver(List<HttpMessageConverter<?>> converters) {
         super(converters);
     }
 

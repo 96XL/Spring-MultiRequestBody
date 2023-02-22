@@ -1,6 +1,6 @@
 package com.xl.multirequestbody.config;
 
-import com.xl.multirequestbody.resolver.MultiRequestBodyArgumentResolver;
+import com.xl.multirequestbody.resolver.MultiRequestBodyMethodArgumentResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -25,7 +25,7 @@ public class WebConfig extends WebMvcConfigurationSupport {
      */
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-        argumentResolvers.add(new MultiRequestBodyArgumentResolver(super.getMessageConverters()));
+        argumentResolvers.add(new MultiRequestBodyMethodArgumentResolver(super.getMessageConverters()));
     }
 
     /**
